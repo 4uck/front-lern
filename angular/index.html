@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Hello angular</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+<script src="general-controller.js"></script>
+<script src="local-controller.js"></script>
+
+</head>
+
+<body>
+
+	<div ng-controller="DemoCtrl">
+		<p>Hello {{name}}</p>
+		<input type="button" value="reset" ng-click="getAction()">
+	</div>
+	
+	<div ng-controller="DemoCtrl">
+		<input type="button" value="reset" ng-click="getAction2()">
+	</div>
+
+	<!-- <div ng-controller="PhoneCtrl">
+		<ul>
+			<li ng-repeat="phone in phones">
+				<b>{{phone.name}}</b>
+				<p>Цена: {{phone.price}} $</p>
+				<p>Производитель: {{phone.company.name}}</p>
+			</li>
+		</ul>
+	</div> -->
+	<!-- 
+		<div ng-controller="PhoneCtrl">
+			<ul>
+				<li ng-repeat="phone in phones">
+					<select>
+						<option ng-repeat="desc in names" ng-selected="check(desc.id, {{phone.id}})">{{desc.name}}</option>
+					</select>
+					<p>Цена: {{phone.price}} $</p>
+					<p>Производитель: {{phone.company.name}}</p>
+				</li>
+			</ul>
+		</div> -->
+
+	<table class="table" ng-controller="PhoneCtrl">
+		<thead>
+		  <tr>
+			<th>#</th>
+			<th>Method</th>
+			<th>Params</th>
+			<th>Username</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-repeat="method in prop.methods">
+			<th scope="row">1</th>
+			<td>
+				<select ng-change="changeMethod()" ng-init="selected=getFunc(method.id)" ng-model="selected" ng-options="v as v.name for v in prop.defaultMethods">
+				</select>
+				<!-- <select ng-model="curMethod">
+					<option ng-repeat="desc in names" ng-selected="check(desc.id, {{phone.id}})" value="desc.id">{{desc.name}}</option>
+				</select> -->
+			</td>
+
+			<td>
+
+			<div ng-if="isParams(method.id)">
+				<select ng-init="selected2=getParams(method.id, method.paramsId)" ng-model="selected2" ng-options="v as v.name for v in prop.defaultMethods[method.id].params">
+				</select>
+			</div>
+
+			<div id="inputField" ng-if="!isParams(method.id)">
+				<input type="text" value="Цена">
+			</div>
+
+				<!-- <select ng-if="isParams(method.id)" ng-options="v for v in prop.defaultMethods[0].params">
+				</select> -->
+
+			</td>
+			<td>Производитель</td>
+		  </tr>
+		</tbody>
+	  </table>
+
+    <div ng-controller="PhoneCtrl">     
+			<select ng-model="items.value" ng-options="item for item in items.values">           
+			</select>
+			<!-- <p>Text: {{ddlViewBy.text}}</p>
+			<p>Value: {{ddlViewBy.value}}</p> -->
+	</div>
+
+	<div ng-controller="PhoneCtrl">
+			<select ng-model="prop.name" ng-options="v for v in prop.defaultMethods">
+			</select>
+	</div>
+
+	<div ng-controller="PhoneCtrl">
+		<select ng-options="item as item.label for item in items track by item.id" ng-model="selected">
+		</select>
+
+</div>
+
+</body>
+</html>

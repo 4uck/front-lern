@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    height: 100vh;
+	justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-signin>button{
+    margin: 5px;
+}
